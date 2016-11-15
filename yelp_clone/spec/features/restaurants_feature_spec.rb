@@ -29,7 +29,6 @@ feature 'restaurants' do
       expect(current_path).to eq '/restaurants'
     end
   end
-
   context 'viewing restaurants' do
     let! (:waffles){Restaurant.create(name:"Waffle House")}
 
@@ -40,7 +39,6 @@ feature 'restaurants' do
       expect(current_path).to eq "/restaurants/#{waffles.id}"
     end
   end
-
   context "editing restaurants" do
     before { Restaurant.create name: 'Waffle House', description: 'The scariest place in America, but great waffles' }
 
@@ -55,4 +53,13 @@ feature 'restaurants' do
       expect(current_path).to eq '/restaurants'
     end
   end
-end
+  context "deleting restaurants" do
+    before { Restaurant.create name: 'Waffle House', description: 'The scariest place in America, but great waffles'}
+    scenario 'removes a restaurant when a user clicks a delete link' do
+      visit '/restaurants'
+      click_link 'Delete Waffle House'
+      expect(page).not_to have_content 'Waffle House'
+      expect(page).to have_content 'Restaurant deleted successfully'
+    end
+  end
+ end
