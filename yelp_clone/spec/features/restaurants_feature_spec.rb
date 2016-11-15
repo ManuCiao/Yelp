@@ -24,6 +24,7 @@ feature 'restaurants' do
       visit '/restaurants'
       click_link 'Add a restaurant'
       fill_in 'Name', with: 'Waffle House'
+      click_button 'Create Restaurant'
       expect(page).to have_content 'Waffle House'
       expect(current_path).to eq '/restaurants'
     end
