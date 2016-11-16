@@ -28,6 +28,13 @@ class RestaurantsController < ApplicationController
       redirect_to '/restaurants'
   end
 
+  def destroy
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
+    flash[:notice] = "Restaurant deleted successfully"
+    redirect_to '/restaurants'
+  end
+
 private
 
   def restaurant_params
@@ -35,12 +42,3 @@ private
   end
 
 end
-
-
-{"utf8"=>"✓",
-  "_method"=>"patch",
-  "restaurant"=>{"name"=>"Pret A Manger", "description"=>"Tasty Sandwiches"},
-  "commit"=>"Update Restaurant",
-  "controller"=>"restaurants",
-  "action"=>"update",
-  "id"=>"24"}
