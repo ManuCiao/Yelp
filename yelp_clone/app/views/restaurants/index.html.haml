@@ -2,6 +2,7 @@
 - if @restaurants.any?
   - @restaurants.each do |restaurant|
     %h2= link_to restaurant.name, restaurant_path(restaurant)
+    %p= restaurant.description
     %p= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant)
 - else
   %h1 No restaurants yet!
