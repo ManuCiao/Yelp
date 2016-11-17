@@ -246,7 +246,7 @@ Devise.setup do |config|
 
   # ==> OmniAuth
 
-  config.omniauth :facebook, ENV["FACEBOOK_APP_ID="], ENV["FACEBOOK_APP_SECRET"]
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"]
   # scope: 'user,public_repo'
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.

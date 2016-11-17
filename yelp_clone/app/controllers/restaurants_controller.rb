@@ -1,14 +1,14 @@
 class RestaurantsController < ApplicationController
 
-   def index
-     @restaurants = Restaurant.all
-   end
+  def index
+    @restaurants = Restaurant.all
+  end
 
-   def new
-     @restaurant = Restaurant.new
-   end
+  def new
+    @restaurant = Restaurant.new
+  end
 
-   def create
+  def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
       redirect_to '/restaurants'
@@ -26,10 +26,10 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-      @restaurant = Restaurant.find(params[:id])
-      @restaurant.update(restaurant_params)
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.update(restaurant_params)
 
-      redirect_to '/restaurants'
+    redirect_to '/restaurants'
   end
 
   def destroy
@@ -39,7 +39,7 @@ class RestaurantsController < ApplicationController
     redirect_to '/restaurants'
   end
 
-private
+  private
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :description)
