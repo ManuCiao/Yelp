@@ -11,10 +11,4 @@
 /log/*
 !/log/.keep
 /tmp
-
-__MACOSX
-.DS_Store
-
-*/.DS_Store
-.DS_Store
-.DS_Store?
+/config/secrets.yml

@@ -8,41 +8,39 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    # raise params.inspect
     @restaurant = Restaurant.create(restaurant_params)
-    redirect_to '/restaurants'
+    if @restaurant.save
+      redirect_to restaurants_path
+    else
+      render 'new'
+    end
+    # redirect_to '/restaurants'
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
   end
 
-def edit
+  def edit
     @restaurant = Restaurant.find(params[:id])
-end
+  end
 
-def update
+  def update
     @restaurant = Restaurant.find(params[:id])
     @restaurant.update(restaurant_params)
-
     redirect_to '/restaurants'
-end
+  end
 
-def destroy
-  @restaurant = Restaurant.find(params[:id])
-  @restaurant.destroy
-  flash[:notice] = 'Restaurant deleted successfully'
-  redirect_to '/restaurants'
+  def destroy
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
+    flash[:notice] = 'Restaurant deleted successfully'
+    redirect_to '/restaurants'
+  end
 
-end
-
-private
+  private
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :description)
   end
-
-
-
-
 end
