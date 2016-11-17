@@ -1,8 +1,4 @@
 source 'https://rubygems.org'
-group :test do
-  gem 'rspec-rails'
-  gem 'capybara'
-end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -46,5 +42,10 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0' #moved from group :development, :test
+end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'rspec-collection_matchers'
 end
