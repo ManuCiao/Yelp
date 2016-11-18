@@ -5,8 +5,9 @@
     %p= restaurant.description
     - restaurant.reviews.each do |review|
       %p= review.thoughts
-    %h3 Average rating:
+    %span Average rating:
     %span= star_rating(restaurant.average_rating)
+    =image_tag restaurant.image.url(:thumb)
     %p= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant)
     %p= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete
     %p= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant)
