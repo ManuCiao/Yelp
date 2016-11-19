@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <h1>Ylp</h1>
 <% if @restaurants.any? %>
   <% @restaurants.each do |restaurant| %>
@@ -6,6 +7,7 @@
     <% restaurant.reviews.each do |review| %>
       <p><%= review.thoughts %></p>
       <% end %>
+      <h3>Average rating: <%= restaurant.average_rating.to_i %></h3>
     <p><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %> |
     <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %> |
     <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></p>
