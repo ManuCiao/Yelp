@@ -1,0 +1,17 @@
+<h1>Ylp</h1>
+<% if @restaurants.any? %>
+  <% @restaurants.each do |restaurant| %>
+    <p><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
+    <p><%= restaurant.description %></p>
+    <% restaurant.reviews.each do |review| %>
+      <p><%= review.thoughts %></p>
+      <% end %>
+    <p><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %> |
+    <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %> |
+    <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></p>
+  <% end %>
+<%else %>
+  <h1>No restaurants yet</h1>
+<% end %>
+
+<a href="/restaurants/new">Add a restaurant</a>
