@@ -93,4 +93,16 @@ feature 'restaurants' do
       expect(page).to have_content 'Restaurant deleted successfully'
     end
   end
+
+  context 'uploading a picture' do
+    scenario 'user can add a picture to the restaurant' do
+      sign_in
+      click_link 'Add a restaurant'
+      fill_in 'Name', with: 'Waffle'
+      page.attach_file("restaurant_image", Rails.root + 'app/assets/images/restaurant.jpg')
+      click_button 'Create Restaurant'
+      expect(page).to have_content('Waffle')
+      expect(current_path).to eq '/restaurants'
+    end
+  end
 end

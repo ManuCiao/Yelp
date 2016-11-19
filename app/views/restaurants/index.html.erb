@@ -4,6 +4,7 @@
 <% @restaurants.each do |restaurant| %>
 <p><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
 <p><%= restaurant.description %></p>
+<%= image_tag restaurant.image.url(:thumb) %>
 <% restaurant.reviews.each do |review| %>
 <p><%= review.thoughts %></p>
 <% end %>
