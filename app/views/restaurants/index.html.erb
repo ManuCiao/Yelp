@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<h1>Ylp</h1>
+<h1>Yelp</h1>
 <% if @restaurants.any? %>
-  <% @restaurants.each do |restaurant| %>
-    <p><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
-    <p><%= restaurant.description %></p>
-    <% restaurant.reviews.each do |review| %>
-      <p><%= review.thoughts %></p>
-      <% end %>
-      <h3>Average rating: <%= restaurant.average_rating.to_i %></h3>
-    <p><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %> |
-    <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %> |
+<% @restaurants.each do |restaurant| %>
+<p><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
+<p><%= restaurant.description %></p>
+<% restaurant.reviews.each do |review| %>
+<p><%= review.thoughts %></p>
+<% end %>
+<h3>Average rating:
+    <%= star_rating(restaurant.average_rating) %>
+</h3>
+<p><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %>
+    |
+    <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %>
+    |
     <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></p>
-  <% end %>
+<% end %>
 <%else %>
-  <h1>No restaurants yet</h1>
+<h1>No restaurants yet</h1>
 <% end %>
 
 <a href="/restaurants/new">Add a restaurant</a>
