@@ -1,24 +1,42 @@
-<!DOCTYPE html>
-<h1>Yelp</h1>
+<div class="title">
+  <span><h3>List of Restaurants</h3>
+  <a href="/restaurants/new", style="float: right;", class="btn btn-success">Add Restaurants</a></span>
+</div>
 <% if @restaurants.any? %>
 <% @restaurants.each do |restaurant| %>
-<p><%= link_to restaurant.name, restaurant_path(restaurant) %></p>
-<p><%= restaurant.description %></p>
-<%= image_tag restaurant.image.url(:thumb) %>
-<% restaurant.reviews.each do |review| %>
-<p><%= review.thoughts %></p>
-<% end %>
-<h3>Average rating:
-    <%= star_rating(restaurant.average_rating) %>
-</h3>
-<p><%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %>
-    |
-    <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %>
-    |
-    <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %></p>
-<% end %>
-<%else %>
-<h1>No restaurants yet</h1>
-<% end %>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Restaurant Name</th>
+        <th>Description</th>
+        <th>Reviews</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
+          <p><%= image_tag restaurant.image.url(:thumb) %></p>
+        </td>
+        <td>
+          <p><%= restaurant.description %></p>
+          <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant), class:"btn btn-default" %>
+          <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete, class:"btn btn-default" %>
+        </td>
+        <td>
+        <% restaurant.reviews.each do |review| %>
+        <p><%= review.thoughts %></p>
+        <% end %>
+        <h5>Average rating: <%= star_rating(restaurant.average_rating) %></h5>
+        <%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant), class:"btn btn-default" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+  <%else %>
+  <h1>No restaurants yet</h1>
+  <% end %>
 
-<a href="/restaurants/new">Add a restaurant</a>
+</div>
+</div>

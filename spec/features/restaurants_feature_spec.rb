@@ -6,7 +6,7 @@ feature 'restaurants' do
     scenario 'should disaplay a prompt to addd a restaurant' do
       visit '/restaurants'
       expect(page).to have_content 'No restaurants yet'
-      expect(page).to have_link 'Add a restaurant'
+      expect(page).to have_link 'Add Restaurants'
     end
   end
 
@@ -26,7 +26,7 @@ feature 'restaurants' do
     context 'user not signed in' do
       scenario 'user cannot add a new restaurant' do
         visit '/restaurants'
-        click_link 'Add a restaurant'
+        click_link 'Add Restaurants'
         expect(page).not_to have_css 'h2', text: 'Waffle'
         expect(page).to have_content 'You need to sign in or sign up before continuing'
       end
@@ -35,7 +35,7 @@ feature 'restaurants' do
     context 'user signed in' do
       scenario 'user fills out a form and adds restaurant' do
         sign_in
-        click_link 'Add a restaurant'
+        click_link 'Add Restaurants'
         fill_in 'Name', with: 'Waffle'
         click_button 'Create Restaurant'
         expect(page).to have_content('Waffle')
@@ -45,7 +45,7 @@ feature 'restaurants' do
       context 'an invalid restaurant' do
         scenario 'does not let you submit a name that is too short' do
           sign_in
-          click_link 'Add a restaurant'
+          click_link 'Add Restaurants'
           fill_in 'Name', with: 'kf'
           click_button 'Create Restaurant'
           expect(page).not_to have_css 'h2', text: 'kf'
@@ -97,7 +97,7 @@ feature 'restaurants' do
   context 'uploading a picture' do
     scenario 'user can add a picture to the restaurant' do
       sign_in
-      click_link 'Add a restaurant'
+      click_link 'Add Restaurants'
       fill_in 'Name', with: 'Waffle'
       page.attach_file("restaurant_image", Rails.root + 'app/assets/images/restaurant.jpg')
       click_button 'Create Restaurant'
