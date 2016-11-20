@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 
+gem 'dotenv-rails', :groups => [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
 # Use postgresql as the database for Active Record
@@ -35,7 +36,8 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'shoulda'
 gem 'paperclip'
-gem "bootstrap-sass-rails", "~> 2.2.2.0"
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'aws-sdk', '< 2.3'
 
 
 group :development, :test do

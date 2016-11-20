@@ -12,4 +12,6 @@
 !/log/.keep
 /tmp
 
+# Ignore AWS keys
 .env
+aws.yml
