@@ -26,26 +26,6 @@ bin/rails s
 
 Visit <http://localhost:3000/restaurants> in your browser.
 
-### Install the dependencies
-
-```bash
-$ npm install
-```
-
-### Starting the application
-
-```bash
-$ npm start
-```
-
-### Running the tests
-
-The application is built using tests. To run the tests, use the `npm` test script:
-
-```shell
-npm run test
-```
-
 ## Objectives
 
 - Learning foundations of Rails
